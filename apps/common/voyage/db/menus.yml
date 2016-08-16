@@ -1,0 +1,11 @@
+system_code: "BASICDATA"
+plugin_code: "voyage"
+modules:
+  - module: 运航管理
+    menus:
+      - menu: 港口维护,ports
+      - menu: 航线类型,route_types
+      - menu: 航线维护,routes
+      - menu: 航次信息,voyages
+      - menu: 船舶类型,vessel_types
+      - menu: 船舶信息,vessels

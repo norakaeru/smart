@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  port_type_id: 1
+  port_id: 
+  route_id: 
+
+two:
+  port_type_id: 1
+  port_id: 
+  route_id: 

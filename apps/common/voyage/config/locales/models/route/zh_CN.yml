@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    models:
+      voyage/route: 航线维护
+    attributes:
+      voyage/route:
+        route_code: 航线编码
+        route_name: 航线名称
+        route_type_id: 航线类型
+        remark: 备注
+        operator: 操作人

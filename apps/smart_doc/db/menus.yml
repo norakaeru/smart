@@ -1,0 +1,11 @@
+system_code: "SMARTDOC"
+plugin_code: "smart_doc"
+modules:
+  - module: 布局
+    groups:
+      - group: smart布局
+        menus:
+          - menu: smart流布局,docs,smart_fluid_layout
+          - menu: smart固定布局,docs,smart_fixed_layout
+    menus:
+      - menu: input组件,docs,smart_input

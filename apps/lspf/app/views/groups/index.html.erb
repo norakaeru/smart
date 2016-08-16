@@ -1,0 +1,76 @@
+<%= javascript_include_tag 'groups' %>
+
+<div id="ctnGroupIndex">
+  <script id="template" type="text/x-kendo-template">
+    <% if can? :read, Group %>
+        <a id="btnDoQuery" class="k-button"><span class="k-icon k-i-search"></span>查询</a>
+    <% end %>
+    <% if can? :edit, Group %>
+        <a id="btnDoNew" class="k-button"><span class="k-icon k-i-plus"></span>新增</a>
+        <a id="btnDoEdit" class="k-button"><span class="k-icon k-i-pencil"></span>编辑</a>
+    <% end %>
+    <% if can? :destroy, Group %>
+        <a id="btnDoDelete" class="k-button"><span class="k-icon k-i-close"></span>删除</a>
+    <% end %>
+  </script>
+
+  <div class="s-row-fluid">
+    <div id="mainGrid" class="s-pct50"></div>
+
+    <div class="s-pct50">
+      <div id="tabstrip" style="border:none;">
+        <ul>
+          <li class="k-state-active">人员维护</li>
+          <li>菜单配置</li>
+          <li>功能权限</li>
+          <li>角色配置</li>
+          <div class="s-row10" style="float: right; text-align: center;"><a id="btnDoSave" class="k-button"><i class="fa fa-save"></i>保存</a></div>
+        </ul>
+
+        <%#= 用户Tab %>
+        <div>
+          <script id="tbUserGrid" type="text/x-kendo-template">
+            <a id="btnDoNewUser" class="k-button"><span class="k-icon k-i-plus"></span>新增</a>
+            <a id="btnDoDeleteUser" class="k-button"><span class="k-icon k-i-close"></span>删除</a>
+          </script>
+
+          <div id="userGrid"></div>
+        </div>
+
+        <%#= 菜单Tab %>
+        <div>
+          <div id="ctnMenusTreeView">
+            <div id="menusTreeView"></div>
+          </div>
+        </div>
+
+        <%#= 权限Tab %>
+        <div>
+          <div id="ctnPermissionsTreeView">
+            <div id="permissionsTreeView"></div>
+          </div>
+        </div>
+
+        <%#= 角色Tab %>
+        <div>
+          <div id="ctnRolesTreeView">
+            <div id="rolesTreeView"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="ctnGroupEditWrap"></div>
+
+<div style="display: none;">
+  <span id="menuTreeData">
+    <%= Menu.system_menus.to_json %>
+  </span>
+  <span id="permissionTreeData">
+    <%= PermissionModule.system_module_permissions.to_json %>
+  </span>
+</div>

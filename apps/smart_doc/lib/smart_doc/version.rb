@@ -1,0 +1,3 @@
+module SmartDoc
+  VERSION = "0.0.1"
+end

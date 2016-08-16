@@ -1,0 +1,79 @@
+<div id="left-panel">
+  <!--一级菜单-->
+  <ul class="s-menu s-module-menu">
+    <% current_module_menus.each do |module_menu| %>
+        <li>
+          <a><span class="fa fa-th-large"></span><b><%= module_menu.label %></b><span class="s-icon-right fa fa-chevron-<%= "#{module_menu == curr_module_menu ? 'down' : 'right'}" %>"></span></a>
+           <!--二级菜单-->
+          <ul class="s-menu s-group-menu" style="display:<%= "#{module_menu == curr_module_menu ? 'block' : 'none'}" %>">
+            <% (group_menus(module_menu) + leaf_menus(module_menu)).each do |menu| %>
+                <% if menu.menu_type=='GROUP' %>
+                    <li>
+                      <a><span class="fa fa-th-list"></span><%= menu.label %><span class="s-icon-right fa fa-<%= "#{menu == curr_group_menu ? 'minus' : 'plus'}" %>-square-o"></span></a>
+                      <!--三级菜单-->
+                      <ul class="s-menu s-leaf-menu" style="display:<%= "#{menu == curr_group_menu ? 'block' : 'none'}" %>">
+                        <% leaf_menus(menu).each do |leaf_menu| %>
+                            <li>
+                              <a href="<%= '/' + leaf_menu.route %>" class="<%= "#{leaf_menu == curr_leaf_menu ? 'k-state-selected' : ''}" %>"><span class="fa fa-indent"></span><%= leaf_menu.label %></a>
+                            </li>
+                        <% end %>
+                      </ul>
+                    </li>
+                <% else %>
+                    <li>
+                      <a href="<%= '/' + menu.route %>" class="<%= "#{menu == curr_leaf_menu ? 'k-state-selected' : ''}" %>"><span class="fa fa-indent"></span><%= menu.label %></a>
+                    </li>
+                <% end %>
+            <% end %>
+          </ul>
+        </li>
+    <% end %>
+  </ul>
+  <div id="minify"><span class="fa fa-arrow-circle-left"></span></div>
+</div>
+
+<script>
+    $(function () {
+        $(".s-module-menu>li>a").click(function () {
+            if (!$(document.body).hasClass("minified")) {
+                if ($(this).children('.s-icon-right').hasClass("fa-chevron-down")) {
+                    $(this).children('.s-icon-right').removeClass('fa-chevron-down').addClass('fa-chevron-right');
+                    $(this).next().slideUp("fast");
+                } else {
+                    $(".s-module-menu>li>a .s-icon-right").removeClass('fa-chevron-down').addClass('fa-chevron-right');
+                    $(".s-module-menu>li>ul").slideUp('fast');
+                    $(this).children('.s-icon-right').removeClass('fa-chevron-right').addClass('fa-chevron-down');
+                    $(this).next().slideDown("fast");
+                }
+            }
+        });
+
+        $(".s-group-menu>li>a").click(function () {
+            if ($(this).children('.s-icon-right').hasClass("fa-minus-square-o")) {
+                $(this).children('.s-icon-right').removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                $(this).next().slideUp("fast");
+            } else {
+                $(".s-group-menu>li>a .s-icon-right").removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                $(".s-group-menu>li>ul").slideUp('fast');
+                $(this).children('.s-icon-right').removeClass('fa-plus-square-o').addClass('fa-minus-square-o');
+                $(this).next().slideDown("fast");
+            }
+        });
+
+        $("#minify").click(function() {
+            $(document.body).toggleClass("minified");
+            if ($(document.body).hasClass("minified")) {
+                $(this).children('span').removeClass('fa-arrow-circle-left').addClass('fa-arrow-circle-right');
+                $(".s-module-menu>li>a .s-icon-right").removeClass('fa-chevron-down').addClass('fa-chevron-right');
+                $(".s-group-menu>li>a .s-icon-right").removeClass('fa-minus-square-o').addClass('fa-plus-square-o');
+                $('.s-icon-right,.s-group-menu,.s-leaf-menu').hide();
+            } else {
+                $(this).children('span').removeClass('fa-arrow-circle-right').addClass('fa-arrow-circle-left');
+                $('.s-icon-right').show();
+            }
+        });
+    });
+</script>
+
+
+

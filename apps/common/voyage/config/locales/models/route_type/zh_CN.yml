@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    models:
+      voyage/route_type: 航线类型
+    attributes:
+      voyage/route_type:
+        type_code: 类型编码
+        type_name: 类型名称
+        remark: 备注
+        operator: 操作人

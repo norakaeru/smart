@@ -1,0 +1,24 @@
+<header id='header'>
+
+  <a class="header-logo" href="/" style="display: block;"></a>
+
+  <div class="header-user">
+    <% if current_user %>
+        <label>欢迎您：</label>
+        <a href="javascript:void(0);"><label class="fa fa-user"></label><%= current_user.name %></a>
+        <a href="/logout">[退出]</a>
+    <% else %>
+        <a href="/login">登录</a>
+    <% end %>
+    <a href="javascript:void(0);"><label class="fa fa-envelope"></label>消息<span>(<strong style='color:orange;'><%= 10 %></strong>)</span></a>
+    <a href="javascript:void(0);"><label class="fa fa-th-list"></label>任务</a>
+  </div>
+
+  <div class="header-menu">
+    <% user_systems.each do |sys| %>
+        <a href="<%= sys.url %>" class="<%= 'k-state-selected' if sys == curr_system %>"><%= sys.system_name %></a>
+    <% end %>
+  </div>
+
+</header>
+

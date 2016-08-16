@@ -1,0 +1,12 @@
+zh-CN:
+  activerecord:
+    models:
+      user: 用户
+    attributes:
+      user:
+        name: 姓名
+        account: 帐号
+        email: 邮箱
+        password: 密码
+        password_confirmation: 确认密码
+        crypted_password: 加密密码

@@ -1,0 +1,11 @@
+zh-CN:
+  activerecord:
+    models:
+      voyage/port: 港口维护
+    attributes:
+      voyage/port:
+        port_code: 港口编码
+        port_name_en: 英文名称
+        port_name_cn: 中文名称
+        remark: 备注
+        operator: 操作人

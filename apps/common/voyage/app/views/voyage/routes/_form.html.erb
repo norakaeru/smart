@@ -1,0 +1,33 @@
+<%= javascript_include_tag 'voyage/routes_form' %>
+
+<div id="ctnVoyageRouteEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+    <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+  </div>
+
+  <%= form_for Voyage::Route.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :route_code, label: {class: "s-span5"}, class: 's-span9', 'data-bind' => 'value:route.route_code' %>
+        <%= f.text_field :route_name, label: {class: "s-span5"}, class: 's-span9', 'data-bind' => 'value:route.route_name' %>
+        <%= f.text_field :route_type_id,  label: {class: "s-span5"}, class: 's-span9', 'data-bind' => 'value:route.route_type_id' %>
+        <%= f.text_field :operator, label: {class: "s-span5"}, class: 's-span9', 'data-bind' => 'value:route.operator' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :remark, label: {class: "s-span5"}, class: 's-span23', 'data-bind' => 'value:route.remark' %>
+      </div>
+
+  <% end %>
+
+  <script id="template" type="text/x-kendo-template">
+    <a class="k-button" id="btnDoNewSub"><span class="fa fa-plus"></span>新增</a>
+    <a class="k-button" id="btnDoDeleteSub"><span class="fa fa-remove"></span>删除</a>
+  </script>
+
+  <div id="subGridEdit"></div>
+</div>
+

@@ -1,0 +1,35 @@
+<div id="main-panel">
+
+  <div style="position: relative;">
+    <div id="theme">
+      <span class="fa fa-cogs"></span>
+      <div style="display:none;">
+        <h5>主题</h5>
+        <ul></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="s-container"> <%= yield %> </div>
+
+</div>
+
+<script>
+    $(function () {
+        $("#theme").click(function(){
+            $(this).toggleClass("activate");
+            if ($(this).hasClass("activate")) {
+                $(this).children("span").removeClass('fa-cogs').addClass('fa-close');
+                $(this).children("div").show();
+            } else {
+                $(this).children("span").removeClass('fa-close').addClass('fa-cogs');
+                $(this).children("div").hide();
+            }
+        });
+
+        $("#theme ul").smartTheme();
+    });
+</script>
+
+
+

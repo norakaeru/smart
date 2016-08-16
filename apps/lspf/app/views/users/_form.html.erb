@@ -1,0 +1,39 @@
+<%= javascript_include_tag 'users_form' %>
+
+<div id="ctnUserEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <% if can? :edit, User %>
+        <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+        <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <% end %>
+    <% if can? :destroy, User %>
+        <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+    <% end %>
+  </div>
+
+  <%= form_for User.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :name, label: {class: "s-span15"}, class: 's-span30', required: true, 'data-bind' => 'value:user.name' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :account, label: {class: "s-span15"}, class: 's-span30', required: true, 'data-bind' => 'value:user.account' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :email, label: {class: "s-span15"}, class: 's-span30', required: true, 'data-bind' => 'value:user.email' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.password_field :password, label: {class: "s-span15"},  class: 's-span30 ', required: true, 'data-bind' => 'value:user.password' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.password_field :password_confirmation, label: {class: "s-span15"}, class: 's-span30 ', required: true, 'data-bind' => 'value:user.password_confirmation' %>
+      </div>
+
+  <% end %>
+
+</div>

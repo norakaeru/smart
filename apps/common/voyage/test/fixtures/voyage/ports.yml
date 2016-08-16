@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  port_code: MyString
+  port_name_en: MyString
+  port_name_cn: MyString
+  operator: MyString
+  remark: MyString
+
+two:
+  port_code: MyString
+  port_name_en: MyString
+  port_name_cn: MyString
+  operator: MyString
+  remark: MyString

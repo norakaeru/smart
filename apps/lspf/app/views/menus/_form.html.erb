@@ -1,0 +1,52 @@
+<%= javascript_include_tag 'menus_form' %>
+
+<div id="ctnMenuEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <% if can? :edit, Menu %>
+        <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+        <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <% end %>
+    <% if can? :destroy, Menu %>
+        <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+    <% end %>
+  </div>
+
+  <%= form_for Menu.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :system_code, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.system_code' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :plugin_code, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.plugin_code' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :label, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.label' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :route, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.route' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :controller, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.controller' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :action, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.action' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :menu_type, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:menu.menu_type' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :parent_menu_id, label: {class: "s-span15"}, class: 's-span30', disabled: true, 'data-bind' => 'value:menu.parent_menu_id' %>
+      </div>
+
+
+  <% end %>
+
+</div>

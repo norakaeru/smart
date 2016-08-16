@@ -1,0 +1,20 @@
+<%= javascript_include_tag 'voyage/ports' %>
+
+<div id="ctnVoyagePortIndex">
+  <script id="template" type="text/x-kendo-template">
+    <% if can? :read, Voyage::Port %>
+        <a id="btnDoQuery" class="k-button" href="\#"><span class="k-icon k-i-search"></span>查询</a>
+    <% end %>
+    <% if can? :edit, Voyage::Port %>
+        <a id="btnDoNew" class="k-button" href="\#"><span class="k-icon k-i-plus"></span>新增</a>
+        <a id="btnDoEdit" class="k-button" href="\#"><span class="k-icon k-i-pencil"></span>编辑</a>
+    <% end %>
+    <% if can? :destroy, Voyage::Port %>
+        <a id="btnDoDelete" class="k-button" href="\#"><span class="k-icon k-i-close"></span>删除</a>
+    <% end %>
+  </script>
+
+  <div id="mainGrid"></div>
+</div>
+
+<div id="ctnVoyagePortEditWrap"></div>

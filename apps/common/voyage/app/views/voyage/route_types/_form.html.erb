@@ -1,0 +1,31 @@
+<%= javascript_include_tag 'voyage/route_types_form' %>
+
+<div id="ctnVoyageRouteTypeEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+    <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+  </div>
+
+  <%= form_for Voyage::RouteType.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :type_code, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:route_type.type_code' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :type_name, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:route_type.type_name' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :operator, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:route_type.operator' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :remark, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:route_type.remark' %>
+      </div>
+
+  <% end %>
+
+</div>

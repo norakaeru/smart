@@ -1,0 +1,9 @@
+system_code: "PERMISSION"
+plugin_code: ""
+modules:
+  - module: 权限管理
+    menus:
+      - menu: 用户管理,users
+      - menu: 菜单管理,menus
+      - menu: 角色管理,roles
+      - menu: 用户组管理,groups

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  route_code: MyString
+  route_name: MyString
+  route_type_id: 
+  operator: MyString
+  remark: MyString
+
+two:
+  route_code: MyString
+  route_name: MyString
+  route_type_id: 
+  operator: MyString
+  remark: MyString

@@ -1,0 +1,24 @@
+<%= javascript_include_tag 'voyage/routes' %>
+
+<div id="ctnVoyageRouteIndex">
+  <script id="template" type="text/x-kendo-template">
+    <a id="btnDoQuery" class="k-button" href="\#"><span class="k-icon k-i-search"></span>查询</a>
+    <a id="btnDoNew" class="k-button" href="\#"><span class="k-icon k-i-plus"></span>新增</a>
+    <a id="btnDoEdit" class="k-button" href="\#"><span class="k-icon k-i-pencil"></span>编辑</a>
+    <a id="btnDoDelete" class="k-button" href="\#"><span class="k-icon k-i-close"></span>删除</a>
+  </script>
+
+  <div class="s-row-fluid">
+    <div id="mainGrid"></div>
+  </div>
+
+  <div class="s-row-fluid">
+    <div id="subGrid"></div>
+  </div>
+</div>
+
+<div id="ctnVoyageRouteEditWrap">
+</div>
+
+<%= select_tag(:basic_data_route_type, options_from_collection_for_select(Voyage::RouteType.all, 'id', 'type_name'), {style: 'display:none;'}) %>
+<%= select_tag(:basic_data_port, options_from_collection_for_select(Voyage::Port.all, 'id', 'port_name_cn'), {style: 'display:none;'}) %>

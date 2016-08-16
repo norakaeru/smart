@@ -1,0 +1,27 @@
+<%= javascript_include_tag 'roles_form' %>
+
+<div id="ctnRoleEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <% if can? :edit, Role %>
+        <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+        <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <% end %>
+    <% if can? :destroy, Role %>
+        <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+    <% end %>
+  </div>
+
+  <%= form_for Role.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :name, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:role.name' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :code, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:role.code' %>
+      </div>
+
+  <% end %>
+
+</div>

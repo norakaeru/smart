@@ -1,0 +1,39 @@
+<%= javascript_include_tag 'voyage/ports_form' %>
+
+<div id="ctnVoyagePortEdit">
+
+  <div class="s-row-fluid s-toolbar">
+    <% if can? :edit, Voyage::Port %>
+        <a class="k-button" id="btnDoNew"><i class="fa fa-plus"></i>新增</a>
+        <a class="k-button" id="btnDoSave"><i class="fa fa-save"></i>保存</a>
+    <% end %>
+    <% if can? :destroy, Voyage::Port %>
+        <a class="k-button" id="btnDoDelete"><i class="fa fa-remove"></i>删除</a>
+    <% end %>
+  </div>
+
+  <%= form_for Voyage::Port.new, builder: SmartFormBuilder do |f| %>
+
+      <div class="s-row-fluid">
+          <%= f.text_field :port_code, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:port.port_code' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :port_name_en, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:port.port_name_en' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :port_name_cn, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:port.port_name_cn' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :operator, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:port.operator' %>
+      </div>
+
+      <div class="s-row-fluid">
+        <%= f.text_field :remark, label: {class: "s-span15"}, class: 's-span30', 'data-bind' => 'value:port.remark' %>
+      </div>
+
+  <% end %>
+
+</div>
