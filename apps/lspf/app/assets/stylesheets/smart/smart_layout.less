@@ -1,4 +1,5 @@
 @import 'smart/smart_base';
+@import 'smart/smart_theme';
 
 //----------------------layout布局------------------------------------
 
@@ -69,7 +70,7 @@
   left: 0;
   width: 220px;
   height: 100%;
-  padding-top: 42px;
+  margin-top: 42px;
   overflow: hidden;
   border-right: 1px solid #ccc;
 }
@@ -83,11 +84,11 @@
 #footer {
   background: url(/assets/smart/black-bg.png) repeat;
   position: absolute;
-  bottom: -40px;
+  bottom: -42px;
   z-index: 1000;
   width: 100%;
-  height: 40px;
-  line-height: 40px;
+  height: 42px;
+  line-height: 42px;
   text-align: center;
   color: #fff;
 }
@@ -153,68 +154,6 @@ ul.s-leaf-menu li>a {
   line-height: 20px;
 }
 
-//不同theme下的slider样式
-.k-black {
-  ul.s-menu li a {
-    background-image: url('textures/glass.png');
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.07) 100%);
-    background-color: #292525;
-    color: #fff;
-  }
-  ul.s-menu li a:hover {
-    background-color: #3D3D3D;
-  }
-}
-
-.k-blueopal {
-  body {
-    background: #fff;
-  }
-  ul.s-menu li a {
-    background-image: url('textures/highlight.png');
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
-    background-color: #D9ECF5;
-    color: #00435E;
-  }
-  ul.s-menu li a:hover {
-    background-color: #7BD2F6;
-  }
-}
-
-.k-flat {
-  ul.s-menu li a {
-    background-image: none;
-    background-color: #363940;
-    color: #fff;
-  }
-  ul.s-menu li a:hover {
-    background-color: #2EB3A6;
-  }
-}
-
-.k-highcontrast {
-  ul.s-menu li a {
-    //background-image: url(textures/glass-lighter.png);
-    background-color: #2C232B;
-    color: #fff;
-  }
-  ul.s-menu li a:hover {
-    background-color: #A7008F;
-  }
-}
-
-.k-moonlight {
-  ul.s-menu li a {
-    background-image: url("textures/brushed-metal.png");
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
-    background-color: #1F2A35;
-    color: #fff;
-  }
-  ul.s-menu li a:hover {
-    background-color: #40444F;
-  }
-}
-
 //----------------------minify-----------------------------------------
 #minify {
   position: absolute;
@@ -251,123 +190,6 @@ ul.s-leaf-menu li>a {
 
 .minified #main-panel {
   padding-left: 45px;
-}
-
-//-----------------------------------theme-------------------------------------
-#theme {
-  position: absolute;
-  z-index: 999;
-  top: 6px;
-  right: 0px;
-  width: 160px;
-  background: #f1da91;
-}
-
-#theme > span {
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  display: block;
-  height: 25px;
-  width: 25px;
-  border-radius: 5px 0 0 5px;
-  background: #f1da91;
-  text-align: center;
-  line-height: 25px;
-  cursor: pointer;
-}
-
-#theme.activate {
-  right: 0px !important;
-  box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.2);
-  padding: 5px;
-}
-
-#theme.activate > span {
-  left: -25px;
-}
-
-#theme h5 {
-  font-weight: bold;
-  font-size: 14px;
-  line-height: 20px;
-  margin: 0;
-  text-align: center;
-  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
-}
-
-#theme ul {
-  margin: 0;
-  padding: 0;
-}
-
-#theme ul li {
-  height: 24px;
-  line-height: 24px;
-  list-style: none;
-  margin-top: 5px;
-  text-align: center;
-  border-radius: 3px;
-  cursor: pointer;
-}
-
-#theme ul li span {
-  font-size: 13px;
-}
-
-.skin-default {
-  color: #fff;
-  background-color: rgb(240, 113, 58);
-}
-
-.skin-black {
-  color: #fff;
-  background-color: rgb(0, 102, 204);
-}
-
-.skin-blueopal {
-  color: #fff;
-  background-color: rgb(88, 165, 198);
-}
-
-.skin-bootstrap {
-  color: #fff;
-  background-color: rgb(0, 68, 204);
-}
-
-.skin-fiori {
-  color: #fff;
-  background-color: rgb(0, 124, 192);
-}
-
-.skin-flat {
-  color: #fff;
-  background-color: rgb(16, 196, 178);
-}
-
-.skin-highcontrast {
-  color: #fff;
-  background-color: rgb(135, 0, 116);
-}
-
-.skin-metro {
-  color: #fff;
-  background-color: rgb(126, 167, 0);
-}
-
-.skin-metroblack {
-  color: #fff;
-  background-color: rgb(0, 136, 134);
-}
-
-.skin-moonlight {
-  color: rgb(23, 30, 40);
-  background-color: rgb(244, 175, 3);
-}
-
-.skin-silver {
-  color: rgb(255, 255, 255);
-  background-color: rgb(10, 122, 194);
 }
 
 //-------------------------------------------------------------------
