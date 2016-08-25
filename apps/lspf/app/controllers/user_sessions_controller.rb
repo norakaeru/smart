@@ -29,6 +29,8 @@ class UserSessionsController < ApplicationController
     cookies.delete :user_info_secret
     session[:user_info_secret] = nil
 
+    reset_session
+
     redirect_to '/'
   end
 

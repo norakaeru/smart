@@ -64,24 +64,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def user_systems
-    user_systems = []
-    System.all.each do |sys|
-      #获取system的默认leaf_menu
-      sys.default_menu = Menu.system_default_menu(sys)
-      user_systems << sys
-    end
-    user_systems
-  end
-
   # 更新session中的用户的菜单
   def update_menus_in_session
     current_menu = Menu.where("controller = ? and action = ? and menu_type = 'LEAF'", params[:controller], params[:action]).first
     if current_menu
       session[:curr_leaf_menu] = current_menu
+      session[:curr_group_menu] = current_menu.group_menu
       session[:curr_module_menu] = current_menu.module_menu
       session[:curr_system] =  current_menu.system
-      session[:user_systems] = user_systems if !session[:user_systems]
+      session[:user_menu_ids] = current_user.menu_ids if !session[:user_menu_ids]
+      session[:user_systems] = current_user.systems session[:user_menu_ids] if !session[:user_systems]
     else
       session[:curr_system] = nil
       logger.debug '当前菜单不存在'

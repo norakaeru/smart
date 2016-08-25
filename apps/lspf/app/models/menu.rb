@@ -1,6 +1,9 @@
 class Menu < ActiveRecord::Base
   extend SmartUtils
 
+  #以system_code作为主外键，默认是id
+  belongs_to :system, :foreign_key => :system_code, :primary_key => :system_code
+
   belongs_to :parent_menu, :class_name => "Menu", :foreign_key => :parent_menu_id
   has_many :menus, :foreign_key => :parent_menu_id
 
@@ -69,36 +72,18 @@ class Menu < ActiveRecord::Base
   end
 
   # module菜单
-  def self.filter_module_menus(system)
-    self.where("system_code = ? and menu_type='MODULE' ", system.system_code)
+  def self.filter_module_menus(system, user_menu_ids)
+    self.where("menu_type='MODULE' and system_code = ? and id in (?) ", system.system_code, user_menu_ids)
   end
 
   # group菜单
-  def self.filter_group_menus(module_menu)
-    self.where("parent_menu_id = ? and menu_type ='GROUP' ", module_menu.id)
+  def self.filter_group_menus(module_menu, user_menu_ids)
+    self.where("menu_type ='GROUP' and parent_menu_id = ? and id in (?) ", module_menu.id, user_menu_ids)
   end
 
   # leaf菜单
-  def self.filter_leaf_menus(module_or_group_menu)
-    self.where("parent_menu_id = ? and menu_type ='LEAF' ", module_or_group_menu.id)
-  end
-
-  # 系统默认菜单
-  def self.system_default_menu(system)
-    first_module_menu = filter_module_menus(system).first
-    return unless first_module_menu
-    module_default_menu(first_module_menu)
-  end
-
-  # module默认菜单
-  def self.module_default_menu(module_menu)
-    first_group_menu = filter_group_menus(module_menu).first
-    filter_leaf_menus(first_group_menu||module_menu).first
-  end
-
-  # 当前菜单所属的system
-  def system
-    System.find_by_system_code(self.system_code)
+  def self.filter_leaf_menus(module_or_group_menu, user_menu_ids)
+    self.where("menu_type ='LEAF' and parent_menu_id = ? and id in (?) ", module_or_group_menu.id, user_menu_ids)
   end
 
   # 当前菜单所属的module菜单
@@ -110,6 +95,17 @@ class Menu < ActiveRecord::Base
     else
       menu = self.parent_menu
       menu.module_menu if menu
+    end
+  end
+
+  # 当前菜单所属的group菜单
+  def group_menu
+    if self.menu_type == 'MODULE'
+      nil
+    elsif self.menu_type == 'GROUP'
+      self
+    else
+      self.parent_menu
     end
   end
 
