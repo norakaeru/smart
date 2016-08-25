@@ -1,5 +1,4 @@
 @import 'smart/smart_base';
-@import 'smart/smart_theme';
 
 //----------------------layout布局------------------------------------
 
@@ -16,10 +15,9 @@
   width: 100%;
   position: relative;
   z-index: 1000;
-  background-color: #555;
+  background: #3f3f3f;
   margin: 0;
-//  -moz-box-shadow: 5px 2px 6px 2px #ccc;
-//  -webkit-box-shadow: 5px 2px 6px 2px #ccc;
+  text-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
 }
 
 .header-logo {
@@ -42,7 +40,7 @@
 
 .header-menu {
   float: right;
-  background-color: #666;
+  background: #555;
   border-left: dashed 1px #888;
   border-right: dashed 1px #888;
   padding: 0 10px;
@@ -60,7 +58,7 @@
 }
 
 .header-menu a:hover {
-  background: #555;
+  background: #3f3f3f;
 }
 
 #left-panel {
@@ -82,7 +80,6 @@
 }
 
 #footer {
-  background: url(/assets/smart/black-bg.png) repeat;
   position: absolute;
   bottom: -42px;
   z-index: 1000;
@@ -90,6 +87,7 @@
   height: 42px;
   line-height: 42px;
   text-align: center;
+  background: #3F3F3F;
   color: #fff;
 }
 
@@ -192,7 +190,202 @@ ul.s-leaf-menu li>a {
   padding-left: 45px;
 }
 
-//-------------------------------------------------------------------
+//-------------------------theme-------------------------------------
+#theme {
+  position: absolute;
+  z-index: 999;
+  top: 6px;
+  right: 0px;
+  width: 160px;
+  background: #f1da91;
+}
+
+#theme > span {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  display: block;
+  height: 25px;
+  width: 25px;
+  border-radius: 5px 0 0 5px;
+  background: #f1da91;
+  text-align: center;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+#theme.activate {
+  right: 0px !important;
+  box-shadow: -10px 10px 5px rgba(0, 0, 0, 0.2);
+  padding: 5px;
+}
+
+#theme.activate > span {
+  left: -25px;
+}
+
+#theme h5 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 0;
+  text-align: center;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.2);
+}
+
+#theme ul {
+  margin: 0;
+  padding: 0;
+}
+
+#theme ul li {
+  height: 24px;
+  line-height: 24px;
+  list-style: none;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#theme ul li span {
+  font-size: 13px;
+}
+
+.skin-default {
+  color: #fff;
+  background-color: #F0713A;
+}
+
+.skin-black {
+  color: #fff;
+  background-color: #0066CC;
+}
+
+.skin-blueopal {
+  color: #fff;
+  background-color: #58A5C6;
+}
+
+.skin-bootstrap {
+  color: #fff;
+  background-color: #0044CC;
+}
+
+.skin-fiori {
+  color: #fff;
+  background-color: #007CC0;
+}
+
+.skin-flat {
+  color: #fff;
+  background-color: #10C4B2;
+}
+
+.skin-highcontrast {
+  color: #fff;
+  background-color: #870074;
+}
+
+.skin-metro {
+  color: #fff;
+  background-color: #7EA700;
+}
+
+.skin-metroblack {
+  color: #fff;
+  background-color: #008886;
+}
+
+.skin-moonlight {
+  color: #171E28;
+  background-color: #F4AF03;
+}
+
+.skin-silver {
+  color: #fff;
+  background-color: #0A7AC2;
+}
+
+//---------------不同theme下的样式----------------------------------
+.k-black {
+  ul.s-menu li a:not(.k-state-selected) {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.07) 100%);
+    background-color: #292525;
+    color: #fff;
+  }
+  ul.s-menu li a:hover {
+    background: #292525;
+    color: #fff;
+  }
+}
+
+.k-blueopal {
+  body { background: #fff;}
+  ul.s-menu li a:not(.k-state-selected) {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
+    background-color: #D9ECF5;
+    color: #00435E;
+  }
+  ul.s-menu li a:hover {
+    background-color: #7BD2F6;
+  }
+}
+
+.k-flat {
+  ul.s-menu li a:not(.k-state-selected) {
+    background-color: #363940;
+    color: #fff;
+  }
+  ul.s-menu li a:hover {
+    background-color: #2EB3A6;
+  }
+  #header, #footer {
+    background: #363940;
+  }
+}
+
+.k-highcontrast {
+  ul.s-menu li a:not(.k-state-selected) {
+    background-color: #2C232B;
+    color: #fff;
+  }
+  ul.s-menu li a:hover {
+    background-color: #A7008F;
+  }
+  #header{
+    background: rgb(27, 20, 26);
+    background: linear-gradient(45deg, rgb(27, 20, 26) 0, rgb(109, 51, 83) 100%);
+  }
+  #footer {
+    background: rgb(27, 20, 26);
+  }
+  #left-panel {
+    background: rgb(63, 55, 62);
+  }
+}
+
+.k-moonlight {
+  ul.s-menu li a:not(.k-state-selected) {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+    background-color: #1F2A35;
+    color: #fff;
+  }
+  ul.s-menu li a:hover {
+    background: #40444F;
+    color: #fff;
+  }
+  #header {
+    background: rgb(33,42,51);
+    background: linear-gradient(45deg, rgb(33,42,51) 0, rgb(69, 77, 86) 100%);
+  }
+  #footer {
+    background: rgb(33,42,51);
+  }
+}
+
+//------------------------------------------------------------------
+
 .s-container {
   padding: 2px 0 0 2px;
   *zoom: 1;
