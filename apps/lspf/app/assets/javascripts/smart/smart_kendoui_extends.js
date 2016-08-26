@@ -27,7 +27,8 @@
             height: 100,
             modal: true,
             visible: false,
-            resizable: false
+            resizable: false,
+            animation: false
         },
 
         _template: function () {
@@ -48,9 +49,13 @@
             $.each(options.buttons, function (i, button) {
                 $(element.find(".dialog-buttons .k-button")[i]).on("click", { handler: button.click }, function (e) {
                     e.data.handler.call();
-                    element.data("kendoWindow").close().destroy();
+                    that.close();
                 });
             });
+        },
+
+        show: function () {
+            this.center().open();
         }
     });
 

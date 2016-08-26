@@ -3,39 +3,48 @@
         window.smart = {};
     }
 
+    //确认框
     smart.confirm = function(options) {
+
+        if ($("#confirmDialog").length > 0) {
+            $("#confirmDialog").parent().remove();
+        }
+
         options = $.extend(true, {
             message: "",
             buttons: [{
                 name: "确认",
-                click: function () {
-                }
+                click: function () {}
             }, {
                 name: "取消",
-                click: function () {
-                }
+                click: function () {}
             }]
         }, options);
 
         var $confirmDialog = $("<div id='confirmDialog'></div>");
 
-        $confirmDialog.kendoDialog(options).data("kendoDialog").center().open();
+        $confirmDialog.kendoDialog(options).data("kendoDialog").show();
 
     };
 
+    //警示框
     smart.alert = function(options) {
+
+        if ($("#alertDialog").length > 0) {
+            $("#alertDialog").parent().remove();
+        }
+
         options = $.extend(true, {
             message: "",
             buttons: [{
                 name: "确认",
-                click: function () {
-                }
+                click: function () {}
             }]
         }, options);
 
         var $alertDialog = $("<div id='alertDialog'></div>");
 
-        $alertDialog.kendoDialog(options).data("kendoDialog").center().open();
+        $alertDialog.kendoDialog(options).data("kendoDialog").show();
     };
 
 })();
