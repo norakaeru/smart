@@ -36,11 +36,10 @@ class User < ActiveRecord::Base
     base_select(result, pages)
   end
 
-  #-------------------includes避免N+1次查询-----------------------------
   #用户菜单id[]
   def menu_ids
     menu_ids = []
-    self.groups.includes(:menus).each do |group|
+    self.groups.each do |group|
       menu_ids.concat group.menus.collect {|menu| menu.id}
     end
     menu_ids
@@ -49,7 +48,7 @@ class User < ActiveRecord::Base
   #用户角色[]
   def roles
     roles = []
-    self.groups.includes(:roles).each do |group|
+    self.groups.each do |group|
        roles.concat group.roles.collect {|role| role.code}
     end
     roles
@@ -63,7 +62,6 @@ class User < ActiveRecord::Base
     end
     permissions
   end
-  #--------------------------------------------------------------------
 
   #用户系统(菜单)[]
   def systems user_menu_ids
