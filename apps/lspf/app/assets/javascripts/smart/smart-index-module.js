@@ -29,7 +29,9 @@
         },
 
         //初始化组件
-        initComponents: function () {},
+        initComponents: function () {
+            //在子类实现
+        },
 
         //初始化变量
         initVars: function () {

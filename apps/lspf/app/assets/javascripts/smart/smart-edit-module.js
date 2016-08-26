@@ -43,11 +43,17 @@
             smart.ajax(options);
         },
 
-        doNew: function () {},
+        doNew: function () {
+            //在子类实现
+        },
 
-        doSave: function () {},
+        doSave: function () {
+            //在子类实现
+        },
 
-        doDelete: function () {},
+        doDelete: function () {
+            //在子类实现
+        },
 
         loadItem: function (item) {
             this.clearErrorNotices();
@@ -114,10 +120,14 @@
         },
 
         //初始化组件
-        initComponents: function () {},
+        initComponents: function () {
+            //在子类实现
+        },
 
         //初始化变量
-        initVars: function () {},
+        initVars: function () {
+            //在子类实现
+        },
 
         //事件绑定
         bindEvents: function () {

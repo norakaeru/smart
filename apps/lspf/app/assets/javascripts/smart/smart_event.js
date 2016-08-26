@@ -14,8 +14,7 @@
 
     //----------------------------自定义事件-------------------------------------------------------------------
     smart.Event = function (eventName, param) {
-        this.eventName = eventName;
-        this.param = param;
+        return new smart.Event.prototype.init(eventName, param);
     };
 
     smart.Event.events = {};
@@ -32,9 +31,16 @@
 
     /**
      * 触发事件
-     * @example:  new smart.Event('eventName', param).fire();
+     * @example:  smart.Event('eventName', param).fire();
      */
     smart.Event.prototype = {
+
+        init: function (eventName, param) {
+            this.eventName = eventName;
+            this.param = param || {};
+            return this;
+        },
+
         fire: function () {
             var handleFun = smart.Event.events[this.eventName];
             if (handleFun) {
@@ -44,5 +50,9 @@
 
         }
     };
+
+    // 无new创建smart.Event对象时实际创建的是smart.Event.init对象，
+    // 需要重定向smart.Event.init对象的prototype属性到smart.Event.prototype
+    smart.Event.prototype.init.prototype = smart.Event.prototype;
 
 })();

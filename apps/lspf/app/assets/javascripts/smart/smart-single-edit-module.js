@@ -31,7 +31,8 @@
         },
 
         doNew: function () {
-            new smart.Event('ITEM_ADD_EVENT', {}).fire();
+            //触发自定义事件
+            smart.Event('ITEM_ADD_EVENT').fire();
 
             this.$("#btnDoNew").hide();
         },
@@ -47,7 +48,8 @@
                 url: this.restUrl + data[modelName].id,
                 data: data,
                 success: function (res) {
-                    new smart.Event('ITEM_SAVE_EVENT', res[modelName]).fire();
+                    //触发自定义事件
+                    smart.Event('ITEM_SAVE_EVENT', res[modelName]).fire();
                 },
                 error: function (jqXHR) {
                     var msg = smart.ajax.formatError(jqXHR);
@@ -67,18 +69,28 @@
                modelName = this.modelName[0];
 
             if (this.isNewItem()) {
-                new smart.Event("ITEM_REMOVE_EVENT", {}).fire();
+                //触发自定义事件
+                smart.Event("ITEM_REMOVE_EVENT").fire();
                 return;
             }
 
-            this.ajax({
-                type: 'delete',
-                url: this.restUrl + this.viewModel[modelName].id,
-                success: function (res) {
-                    new smart.Event("ITEM_REMOVE_EVENT", {}).fire();
-                },
-                error: function (jqXHR) {}
+            smart.confirm({
+                message: "您确定要删除这条记录?",
+                buttons: [{
+                    click: function () {
+                        smart.ajax({
+                            type: 'delete',
+                            url: self.restUrl + self.viewModel[modelName].id,
+                            success: function (res) {
+                                //触发自定义事件
+                                smart.Event("ITEM_REMOVE_EVENT").fire();
+                            },
+                            error: function (jqXHR) {}
+                        });
+                    }
+                }]
             });
+
         }
 
     });
