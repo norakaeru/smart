@@ -73,6 +73,7 @@ class Menu < ActiveRecord::Base
 
   # module菜单
   def self.filter_module_menus(system, user_menu_ids)
+    return [] if system.nil?
     self.where("menu_type='MODULE' and system_code = ? and id in (?) ", system.system_code, user_menu_ids)
   end
 
