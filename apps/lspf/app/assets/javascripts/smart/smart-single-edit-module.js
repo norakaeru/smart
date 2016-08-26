@@ -53,7 +53,7 @@
                     var msg = smart.ajax.formatError(jqXHR);
 
                     if (jqXHR.status == 401) {
-                        smart.alert({message: msg.notice});
+                        smart.alert(msg.notice);
                     } else {
                         var errors = msg.data[modelName];
                         self.showFieldErrors(errors);

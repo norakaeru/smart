@@ -246,7 +246,7 @@
                 menuIds = self._getMenuIds(treeView);
 
             if (!dataItem) {
-                smart.alert({message: "请选择用户组" });
+                smart.alert("请选择用户组");
                 return;
             }
 
@@ -325,7 +325,7 @@
                 permissionIds = self._getPermissionIds(treeView);
 
             if (!dataItem || !dataItem.id) {
-                smart.alert({message: "请选择用户组" });
+                smart.alert("请选择用户组");
                 return;
             }
 

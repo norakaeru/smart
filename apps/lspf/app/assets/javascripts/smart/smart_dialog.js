@@ -4,7 +4,7 @@
     }
 
     //确认框
-    smart.confirm = function(options) {
+    smart.confirm = function (options) {
 
         if ($("#confirmDialog").length > 0) {
             $("#confirmDialog").parent().remove();
@@ -12,13 +12,18 @@
 
         options = $.extend(true, {
             message: "",
-            buttons: [{
-                name: "确认",
-                click: function () {}
-            }, {
-                name: "取消",
-                click: function () {}
-            }]
+            buttons: [
+                {
+                    name: "确认",
+                    click: function () {
+                    }
+                },
+                {
+                    name: "取消",
+                    click: function () {
+                    }
+                }
+            ]
         }, options);
 
         var $confirmDialog = $("<div id='confirmDialog'></div>");
@@ -28,23 +33,15 @@
     };
 
     //警示框
-    smart.alert = function(options) {
+    smart.alert = function (message) {
 
         if ($("#alertDialog").length > 0) {
             $("#alertDialog").parent().remove();
         }
 
-        options = $.extend(true, {
-            message: "",
-            buttons: [{
-                name: "确认",
-                click: function () {}
-            }]
-        }, options);
-
         var $alertDialog = $("<div id='alertDialog'></div>");
 
-        $alertDialog.kendoDialog(options).data("kendoDialog").show();
+        $alertDialog.kendoDialog({message: message}).data("kendoDialog").show();
     };
 
 })();

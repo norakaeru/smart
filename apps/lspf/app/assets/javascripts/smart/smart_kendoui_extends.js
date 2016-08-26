@@ -28,7 +28,15 @@
             modal: true,
             visible: false,
             resizable: false,
-            animation: false
+            animation: false,
+            message: "",
+            buttons: [
+                {
+                    name: "确认",
+                    click: function () {
+                    }
+                }
+            ]
         },
 
         _template: function () {

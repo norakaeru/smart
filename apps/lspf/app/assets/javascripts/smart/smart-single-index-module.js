@@ -41,7 +41,7 @@
             }
 
             if (editItems.length < 1) {
-                smart.alert({message: "请选择要编辑的行" });
+                smart.alert("请选择要编辑的行");
                 return false;
             }
 
@@ -65,7 +65,7 @@
             }
 
             if (deleteIds.length < 1) {
-                smart.alert({message: "请选择要删除的行" });
+                smart.alert("请选择要删除的行");
                 return false;
             }
 

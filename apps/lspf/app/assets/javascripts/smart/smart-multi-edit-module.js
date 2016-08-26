@@ -61,7 +61,7 @@
                     var msg = smart.ajax.formatError(jqXHR);
 
                     if (jqXHR.status == 401) {
-                        smart.alert({message: msg.notice});
+                        smart.alert(msg.notice);
                     } else {
                         var main_errors = msg.data[modelName],
                             sub_errors = msg.data[subName];
