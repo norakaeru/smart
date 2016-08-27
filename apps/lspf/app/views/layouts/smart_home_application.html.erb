@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>慧通物流SaaS平台</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="smart-layout" >
+
+  <%= render '/layouts/header' %>
+
+  <div class="s-container">
+    <%= yield %>
+  </div>
+
+</div>
+
+</body>
+</html>
