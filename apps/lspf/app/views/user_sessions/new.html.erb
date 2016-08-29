@@ -1,19 +1,68 @@
+<%= stylesheet_link_tag "bootstrap/bootstrap", media: "all" %>
 
-<%= form_for @user_session, builder: SmartFormBuilder, url: user_sessions_path do |f| %>
+<div class="login-box">
+  <div class="login-title"></div>
+  <div class="login-content">
+    <%= form_for @user_session, url: user_sessions_path do |f| %>
+        <div class="form-group">
+          <div class="col-md-12">
+            <div class="input-group">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+              <%= f.text_field :account, class: "form-control", placeholder: "用户名" %>
+            </div>
+          </div>
 
-    <div class="s-row-fluid">
-      <%= f.text_field :account, label: {class: "s-span15"}, class: 's-span30' %>
-    </div>
+          <div class="col-md-12">
+            <div class="input-group">
+              <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+              <%= f.text_field :password, class: "form-control", placeholder: "密码" %>
+            </div>
+          </div>
 
-    <div class="s-row-fluid">
-      <%= f.text_field :password, label: {class: "s-span15"}, class: 's-span30' %>
-    </div>
+          <div class="col-md-12">
+            <%= f.submit "登录", class: "form-control btn btn-primary" %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+</div>
 
-    <div class="actions">
-      <%= f.submit 'sing in' %>
-    </div>
+<style>
+    body {
+        background-image: url(/assets/smart/login_bg.png);
+    }
 
-<% end %>
+    .login-box {
+        width: 500px;
+        height: 300px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -250px;
+        margin-top: -200px;
+        padding: 20px;
+        overflow: hidden;
+        box-shadow: 0 -15px 30px #444;
+        border-radius: 5px;
+        background: #fff;
+    }
+
+    .login-title {
+        width: 100%;
+        height: 50px;
+        background: url(/assets/smart/login_title.png) no-repeat center;
+    }
+
+    .login-content {
+        width: 400px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .form-group>div[class^="col-md"] {
+        margin: 10px 0;
+    }
+</style>
 
 
 
