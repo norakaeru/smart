@@ -18,7 +18,7 @@
         return this.each(function() {
             var theme = "default";
             try {
-                theme = sessionStorage.getItem("kendoSkin");
+                theme = localStorage.getItem("kendoSkin");
             } catch(err) {}
 
             $(this).html(kendo.render(template, themes))
@@ -49,7 +49,7 @@
             url = commonLink.attr("href").replace(skinRegex, "kendo." + skinName + "$1" + extension);
 
         function replaceTheme() {
-            var oldSkinName = sessionStorage.getItem("kendoSkin"),
+            var oldSkinName = localStorage.getItem("kendoSkin"),
                 newLink;
 
             if (navigator.userAgent.match(/MSIE ([6-9]+)\./)) {
@@ -65,9 +65,9 @@
             //html Class
             $(doc.documentElement).removeClass("k-" + oldSkinName).addClass("k-" + skinName);
 
-            //sessionStorage
+            //localStorage
             try {
-                sessionStorage.setItem("kendoSkin", skinName);
+                localStorage.setItem("kendoSkin", skinName);
             } catch(err) {}
         }
 
@@ -77,8 +77,8 @@
     function applyCurrentTheme() {
         try {
             var theme = "default";
-            if (sessionStorage && sessionStorage.length) {
-                theme = sessionStorage.getItem("kendoSkin");
+            if (localStorage && localStorage.length) {
+                theme = localStorage.getItem("kendoSkin");
             }
             changeTheme(theme);
         } catch(err) {}

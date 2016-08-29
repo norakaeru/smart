@@ -1,7 +1,15 @@
-<div class="system-image">
-  <% user_systems.each do |sys| %>
-      <a href="<%= sys.url %>" class="<%= 'system-image-'+ sys.system_code.downcase %>"></a>
-  <% end %>
+<div class="system-link">
+
+  <div class="s-fieldset">
+    <label>系统快捷入口</label>
+  </div>
+
+  <div class="system-image">
+    <% user_systems.each do |sys| %>
+        <a href="<%= sys.url %>" class="<%= 'system-image-'+ sys.system_code.downcase %>"></a>
+    <% end %>
+  </div>
 </div>
 
 <div style="display: none;" id="user_group_settings"><%= user_group_settings %></div>
+

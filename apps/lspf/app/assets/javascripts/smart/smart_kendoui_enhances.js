@@ -16,6 +16,7 @@
             actions: ["Maximize","Close"],
             visible: false,
             modal: true,
+            animation: false,
             content: ""
         }, options);
 
