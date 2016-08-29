@@ -17,14 +17,6 @@ module MenusHelper
     session[:curr_leaf_menu]
   end
 
-  def user_menu_ids
-    session[:user_menu_ids] || []
-  end
-
-  def user_systems
-    session[:user_systems] || []
-  end
-
   def current_module_menus
     Menu.filter_module_menus(curr_system, user_menu_ids)
   end

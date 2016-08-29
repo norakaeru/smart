@@ -32,12 +32,12 @@
                 },
                 toolbar: kendo.template($("#template").html()),
                 command: {
-                    onEditClick: function () {
+                    onEditClick: smart.user.hasRole("edit", "voyage/ports") && function () {
                         return function (event) {
                             self.doEdit.call(self, event)
                         }
                     }(self),
-                    onDelClick: function () {
+                    onDelClick: smart.user.hasRole("delete", "voyage/ports") && function () {
                         return function (event) {
                             self.doDelete.call(self, event)
                         }

@@ -8,18 +8,13 @@ class ApplicationController < ActionController::Base
 
   around_filter :catch_exceptions
 
-  helper_method :current_user_session, :current_user
+  helper_method :current_user, :user_menu_ids, :user_systems, :user_group_settings
 
   #只有用户登录后, 才有权限访问页面
   def require_login
     if current_user.nil?
       redirect_to '/login'
     end
-  end
-
-  # 判断是否有用户登录
-  def logged_in?
-    !current_user.nil?
   end
 
   # 获取当前登录session
@@ -60,24 +55,42 @@ class ApplicationController < ActionController::Base
     Thread.current[:current_user] = current_user
     # 如果是get请求并且是html请求，且不是ajax请求，则更新session中的菜单
     if get_request? && html_request? && !ajax_request?
-      update_menus_in_session
+      update_session_menus
     end
   end
 
   # 更新session中的用户的菜单
-  def update_menus_in_session
+  def update_session_menus
     current_menu = Menu.where("controller = ? and action = ? and menu_type = 'LEAF'", params[:controller], params[:action]).first
     if current_menu
       session[:curr_leaf_menu] = current_menu
       session[:curr_group_menu] = current_menu.group_menu
       session[:curr_module_menu] = current_menu.module_menu
       session[:curr_system] =  current_menu.system
-      session[:user_menu_ids] = current_user.menu_ids if !session[:user_menu_ids]
-      session[:user_systems] = current_user.systems session[:user_menu_ids] if !session[:user_systems]
     else
-      session[:curr_system] = nil
       logger.debug '当前菜单不存在'
     end
+  end
+
+  # 用户的菜单ids
+  def user_menu_ids
+    session[:user_menu_ids] ||= current_user.menu_ids
+  end
+
+  # 用户的系统（菜单）
+  def user_systems
+    session[:user_systems] ||= current_user.systems(user_menu_ids)
+  end
+
+  # 用户的所有权限json,访问home/index时运行
+  def user_group_settings
+    current_user.groups.to_json(
+        only: [:name],
+        include: {
+            permissions: {only: [:code, :controller]},
+            roles: {only: [:code, :name]}
+        }
+    )
   end
 
   # 异常处理
